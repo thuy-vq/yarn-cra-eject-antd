@@ -1,38 +1,43 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { Card, Button } from 'antd';
-import {FormattedMessage, FormattedHTMLMessage} from 'react-intl';
+import { Button, Card, Empty } from 'antd';
+import { FormattedMessage, FormattedHTMLMessage } from 'react-intl';
+import { CHANGE_LOCALE } from '../../redux/LanguageProvider/constants';
 
-const IntlExample = ({ increment, decrement, value }) => (
-    <Card title="Card title" bordered={false} style={{ width: 300 }}>
-      <p>
-        <FormattedHTMLMessage id="app.text"
-          defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
-          description="Welcome header on app main page"
-          values={{ what: 'react-intl' }}
-        />
-      </p>
-      <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-        <FormattedMessage
-          id="app.learn-react-link"
-          defaultMessage="Learn React"
-          description="Link on react page"
-        />
-      </a>
-    </Card>
+const IntlExample = ({ locale, actionChangeLocale }) => (
+  <Card title="Card title" bordered={false}>
+    <p>
+      <FormattedHTMLMessage
+        id="app.text"
+        defaultMessage="Edit <code>src/App.js</code> and save to reload.<br/>Now with {what}!"
+        description="Welcome header on app main page"
+        values={{ what: 'react-intl' }}
+      />
+    </p>
+    <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+      <FormattedMessage
+        id="app.learn-react-link"
+        defaultMessage="Learn React"
+        description="Link on react page"
+      />
+    </a>
+    <Empty />
+    <div>
+      <Button onClick={() => actionChangeLocale(locale === 'en' ? 'de' : 'en')}>change language: {locale}</Button>
+    </div>
+  </Card>
 );
 
 const mapStateToProps = state => ({
-  value: state.app.value
+  locale: state.language.locale
 });
 
 const mapDispatchToProps = dispatch => ({
-  increment: () => dispatch({ type: 'INCREMENT' }),
-  decrement: () => dispatch({ type: 'DECREMENT' })
+  actionChangeLocale: locale => dispatch({ type: CHANGE_LOCALE, locale })
 });
 
 export default connect(
-    mapStateToProps,
+  mapStateToProps,
     mapDispatchToProps
 )(IntlExample);

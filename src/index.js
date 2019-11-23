@@ -7,6 +7,7 @@ import { Router } from "@reach/router"
 import Apps from './pages/Apps/Apps';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
+import LocaleProvider from './utils/providers/LocaleProvider';
 
 ReactDOM.render(
   <Provider store={store}>

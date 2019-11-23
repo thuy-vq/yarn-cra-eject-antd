@@ -4,6 +4,13 @@
     [
       "import",
       { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }
+    ],
+    [
+      "react-intl",
+      {
+        "messagesDir": "./build/messages",
+        "extractSourceLocation": true
+      }
     ]
   ]
 }

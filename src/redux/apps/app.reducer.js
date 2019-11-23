@@ -1,8 +1,8 @@
-const INITIAL_STATE = {
+const initialState = {
   value: 0,
 };
 
-const appReducer = (state = INITIAL_STATE, action) => {
+const appReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'INCREMENT_FROM_SAGA':
       return {
