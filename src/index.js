@@ -8,12 +8,15 @@ import Apps from './pages/Apps/Apps';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import LocaleProvider from './utils/providers/LocaleProvider';
+import 'sanitize.css';
+import 'sanitize.css/typography.css';
+import 'sanitize.css/forms.css';
 
 ReactDOM.render(
   <Provider store={store}>
     <LocaleProvider>
       <Router>
-        <Apps path="/" />
+        <Apps path="/" exact />
       </Router>
     </LocaleProvider>
   </Provider>,
