@@ -3,21 +3,21 @@ import "regenerator-runtime/runtime";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router } from "@reach/router"
-import Apps from './pages/Apps/Apps';
 import * as serviceWorker from './serviceWorker';
 import store from './redux/store';
 import LocaleProvider from './utils/providers/LocaleProvider';
+
+import Routes from './routes/Routes';
+
 import 'sanitize.css';
-import 'sanitize.css/typography.css';
-import 'sanitize.css/forms.css';
+
+// import 'sanitize.css/typography.css';
+// import 'sanitize.css/forms.css';
 
 ReactDOM.render(
   <Provider store={store}>
     <LocaleProvider>
-      <Router>
-        <Apps path="/" exact />
-      </Router>
+      <Routes />
     </LocaleProvider>
   </Provider>,
   document.getElementById('root')

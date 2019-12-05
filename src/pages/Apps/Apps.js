@@ -1,9 +1,21 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
+import { Link } from "@reach/router";
+import Footer from '../../components/Footer/Footer';
 import './apps.scss';
+import { Router } from '@reach/router';
 
 const { SubMenu } = Menu;
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Sider } = Layout;
+
+const Homepage = () => 'this is Homepage page'
+const HotPage = () => 'this is Hot page'
+const Sub = () => 'this is sub page'
+const History = () => 'this is History page'
+const Search = () => 'this is search page'
+const BoysPage = () => 'this is BoysPage page'
+const GirlPage = () => 'this is girlPage page'
+const Contact = () => 'this is Contact page'
 
 class Apps extends Component {
   state = {
@@ -23,12 +35,16 @@ class Apps extends Component {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['2']}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
+            <Menu.Item key="1"><Link to="./">Home</Link></Menu.Item>
+            <Menu.Item key="2"><Link to="/hot">Hot</Link></Menu.Item>
+            <Menu.Item key="3"><Link to="/subscriber">subscriber</Link></Menu.Item>
+            <Menu.Item key="4"><Link to="/history">history</Link></Menu.Item>
+            <Menu.Item key="5"><Link to="/search">search</Link></Menu.Item>
+            <Menu.Item key="6"><Link to="/boys">boys</Link></Menu.Item>
+            <Menu.Item key="7"><Link to="/girls">girls</Link></Menu.Item>
+            <Menu.Item key="8"><Link to="/contact">contact</Link></Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>
@@ -82,7 +98,19 @@ class Apps extends Component {
             <Content style={{ padding: '0 24px', minHeight: 280 }}>Content</Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer />
+
+        <Router primary={false}>
+          <Homepage path="./" />
+          <HotPage path="/hot" />
+          <Sub path="/subscriber" />
+          <History path="/history" />
+          <Search path="/search" />
+          <BoysPage path="/boys" />
+          <GirlPage path="/girls" />
+          <Contact path="/contact" />
+        </Router>
+
       </Layout>
     );
   }
