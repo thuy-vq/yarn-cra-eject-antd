@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import { Link } from "@reach/router";
+import { Link, Switch, Route } from 'react-router-dom';
 import Footer from '../../components/Footer/Footer';
 import './apps.scss';
-import { Router } from '@reach/router';
-
+import KnockConfiguration from '../KnockConfiguration/KnockConfiguration';
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -37,7 +36,7 @@ class Apps extends Component {
             mode="horizontal"
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1"><Link to="./">Home</Link></Menu.Item>
+            <Menu.Item key="1"><Link to="/">Home</Link></Menu.Item>
             <Menu.Item key="2"><Link to="/hot">Hot</Link></Menu.Item>
             <Menu.Item key="3"><Link to="/subscriber">subscriber</Link></Menu.Item>
             <Menu.Item key="4"><Link to="/history">history</Link></Menu.Item>
@@ -45,6 +44,7 @@ class Apps extends Component {
             <Menu.Item key="6"><Link to="/boys">boys</Link></Menu.Item>
             <Menu.Item key="7"><Link to="/girls">girls</Link></Menu.Item>
             <Menu.Item key="8"><Link to="/contact">contact</Link></Menu.Item>
+            <Menu.Item key="9"><Link to="/knock-configuration">Knock Configuration(KC)</Link></Menu.Item>
           </Menu>
         </Header>
         <Content style={{ padding: '0 50px' }}>
@@ -95,21 +95,22 @@ class Apps extends Component {
                 </Menu.Item>
               </Menu>
             </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 280 }}>Content</Content>
+            <Content style={{ padding: '0 24px', minHeight: 280 }}>
+              <Switch>
+                <Route path="/home" component={Homepage} />
+                <Route path="/hot" component={HotPage} />
+                <Route path="/subscriber" component={Sub} />
+                <Route path="/history" component={History} />
+                <Route path="/search" component={Search} />
+                <Route path="/boys" component={BoysPage} />
+                <Route path="/girls" component={GirlPage} />
+                <Route path="/contact" component={Contact} />
+                <Route path="/knock-configuration" component={KnockConfiguration} />
+              </Switch>
+            </Content>
           </Layout>
         </Content>
         <Footer />
-
-        <Router primary={false}>
-          <Homepage path="./" />
-          <HotPage path="/hot" />
-          <Sub path="/subscriber" />
-          <History path="/history" />
-          <Search path="/search" />
-          <BoysPage path="/boys" />
-          <GirlPage path="/girls" />
-          <Contact path="/contact" />
-        </Router>
 
       </Layout>
     );
