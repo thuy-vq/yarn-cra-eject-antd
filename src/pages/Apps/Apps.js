@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import { Link, Switch, Route } from 'react-router-dom';
-import Footer from '../../components/Footer/Footer';
+import Footer from 'components/Footer/Footer';
 import './apps.scss';
 import KnockConfiguration from '../KnockConfiguration/KnockConfiguration';
 const { SubMenu } = Menu;
