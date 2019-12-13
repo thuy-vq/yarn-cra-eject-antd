@@ -3,18 +3,25 @@ import "regenerator-runtime/runtime";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { Router } from "@reach/router"
-import Apps from './pages/Apps/Apps';
+import { ConnectedRouter } from 'connected-react-router'
 import * as serviceWorker from './serviceWorker';
-import store from './redux/store';
+import configureStore from './redux/configureStore';
 import LocaleProvider from './utils/providers/LocaleProvider';
 
+import history from './redux/history';
+import Routes from './routes/Routes';
+
+import 'sanitize.css';
+
+// import 'sanitize.css/typography.css';
+// import 'sanitize.css/forms.css';
+
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={configureStore}>
     <LocaleProvider>
-      <Router>
-        <Apps path="/" />
-      </Router>
+      <ConnectedRouter history={history}>
+        <Routes />
+      </ConnectedRouter>
     </LocaleProvider>
   </Provider>,
   document.getElementById('root')
