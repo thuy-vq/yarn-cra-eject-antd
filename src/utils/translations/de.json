@@ -1,4 +1,5 @@
 {
   "app.text": "Bearbeite und speichere <code>src/App.js</code> um diese Seite neu zu laden.<br/>Nun mit {what}!",
-  "app.learn-react-link": "Lerne React."
+  "app.learn-react-link": "Lerne React.",
+  "IDS_KC_SELECT_TODAY": "Select Today"
 }

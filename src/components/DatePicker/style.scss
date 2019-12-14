@@ -1,0 +1,209 @@
+@mixin --selected {
+  border: solid 1px #37b3ff;
+  background-color: #37b3ff;
+  color: #fff;
+}
+
+@mixin --hover {
+  border: solid 1px #37b3ff;
+  color: #37b3ff;
+  background-color: #fff;
+}
+
+@mixin --inactive {
+  background-color: #fff !important;
+  color: #e5e5e5 !important;
+  border: solid 1px #e5e5e5 !important;
+}
+
+@mixin -btn-state {
+  &-today-selected {
+    @include --selected;
+  }
+  &:hover {
+    @include --hover;
+  }
+  &[disabled], &.disabled {
+    @include --inactive;
+  }
+}
+
+@mixin -btn-date {
+  background-color: #fff;
+  color: #000;
+  height: 26px;
+  line-height: 26px;
+  border-radius: 2px;
+  border: solid 1px #e5e5e5;
+}
+
+.date-picker {
+  &__icon {
+    cursor: pointer;
+  }
+  &-custom {
+    position: absolute;
+    right: 0;
+    left: auto;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    &__group-quick-day-btn {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+  &__button {
+    border-radius: 2px;
+    border: solid 1px #e5e5e5;
+    background-color: #fff;
+    cursor: pointer;
+    @include -btn-state;
+
+    &-today {
+      width: 261px;
+      height: 26px;
+    }
+    &-next {
+      width: 30px;
+      height: 30px;
+    }
+    &-title {
+      width: 190px;
+      height: 30px;
+    }
+    &-year {
+      height: 26px;
+      flex-basis: 48px;
+      margin-bottom: 5px;
+      &--selected {
+        background-color: #37b3ff;
+        color: #fff;
+      }
+      &:hover {
+        @include --hover;
+      }
+    }
+  }
+  &__div-year-wrapper {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    margin-top: 15px;
+    &__day-month-select {
+      margin: 15px 0 75px;
+    }
+    .react-datepicker {
+      &__month {
+        &.react-datepicker__monthPicker {
+          margin: 0;
+        }
+        &-container {
+          width: 100%;
+          height: 230px;
+        }
+        &-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          //flex-basis: auto;
+        }
+        &-text {
+          @include -btn-date;
+          flex-grow: 1;
+          &:hover {
+            border: solid 1px #37b3ff;
+            color: #37b3ff;
+            background-color: #fff;
+          }
+        }
+        &--disabled {
+          @include --inactive;
+        }
+        &--selected {
+          border: solid 1px #37b3ff;
+          background-color: #37b3ff;
+          color: #fff;
+        }
+      }
+
+      &__day {
+        @include -btn-date;
+        &--today {
+          background-color: #e5e5e5;
+          color: #000;
+        }
+        &--selected {
+          @include --selected;
+        }
+        &:hover {
+          @include --hover;
+        }
+        &--disabled {
+          @include --inactive;
+        }
+      }
+
+      &__week {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__month {
+        margin: 0;
+      }
+
+      &__header {
+        background-color: #fff;
+        border: none;
+        padding-top: 0;
+        .react-datepicker-year-header {
+          display: none;
+        }
+        &.react-datepicker-year-header {
+          display: none;
+        }
+      }
+
+      &__day-name {
+        font-weight: bold;
+      }
+    }
+  }
+  &__header-div {
+    padding: 16px;
+    color: #000;
+    background-color: #fff;
+  }
+  &__header-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &-div-wrapper {
+    position: relative;
+  }
+  &-input {
+    width: 125px;
+    height: 34px;
+    border-radius: 2px;
+    border: solid 1px #cccccc;
+    padding-left: 10px;
+    font-size: 13px;
+    &:focus {
+      border: solid 1px #404040;
+    }
+    &[disabled], &.disabled {
+      cursor: default;
+      @include --inactive;
+    }
+  }
+  &-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    width: 21px;
+    height: 21px;
+  }
+}

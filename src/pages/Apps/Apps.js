@@ -4,6 +4,7 @@ import { Link, Switch, Route } from 'react-router-dom';
 import Footer from 'components/Footer/Footer';
 import './apps.scss';
 import KnockConfiguration from '../KnockConfiguration/KnockConfiguration';
+
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
@@ -24,7 +25,6 @@ class Apps extends Component {
   onCollapse = collapsed => {
     this.setState({ collapsed });
   };
-
 
   render () {
     return (
